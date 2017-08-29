@@ -4,14 +4,12 @@ from .forms import RegisterForm
 # Create your views here.
 
 def register(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
 
-        if form.is_valid():
-            form.save()
-            return redirect('/')
+    return render(request,'Regi/index.html')
 
-    else:
-        form = RegisterForm()
-    return render(request,'Regi/register.html',context={'form':form})
+def acc_register(request):
+    email = request.POST['email']
+    password = request.POST['password']
+
+    return HttpResponse(email+'\n'+password)
 
