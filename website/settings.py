@@ -126,3 +126,5 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'validate.User'#..
 LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/shanghai'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'

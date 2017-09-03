@@ -1,43 +1,43 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>登录</title>
-    <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css">
-    <style>
-        .errorlist {
-            color: red;
-        }
-    </style>
+<title>ChinaZ</title>
+<link href="/static/css/style.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="App Loction Form,Login Forms,Sign up Forms,Registration Forms,News latter Forms,Elements"./>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</script>
+<!--webfonts-->
+<link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
 </head>
 <body>
-<div class="flex-center">
-    <div class="container">
-        <div class="flex-center">
-            <div class="unit-1-2 unit-1-on-mobile">
-                <h3>登录</h3>
-                <form class="form" action="{% url 'login' %}" method="post">
-                    {% csrf_token %}
-                    {{ form.non_field_errors }}
-                    {% for field in form %}
-                        {{ field.label_tag }}
-                        {{ field }}
-                        {{ field.errors }}
-                        {% if field.help_text %}
-                            <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
-                        {% endif %}
-                    {% endfor %}
-                    <button type="submit" class="btn btn-primary btn-block">登录</button>
-                </form>
-                <div class="flex-left top-gap text-small">
-                    <div class="unit-2-3"><span>没有账号？<a href="{% url 'validate:register' %}">立即注册</a></span></div>
-                    <div class="unit-1-3 flex-right"><span><a href="reset_password.html">忘记密码？</a></span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+	<h1>用户登录</h1>
+		<div class="app-location">
+			<h2>Welcome to Locaticus</h2>
+			<div class="line"><span></span></div>
+			<div class="location"><img src="/static/images/location.png" class="img-responsive" alt="" /></div>
+
+			<form action="{% url 'validate:acc_login' %}"  method="post">
+			{% csrf_token %}
+
+				<input name='email' type="text" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}" >
+				<input name='password' type="password" class="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+
+				<div class="submit"><input type="submit" onclick="myFunction()" value="登录" ></div>
+				<div class="clear"></div>
+				<div class="new">
+					<h3><a href="#">忘记密码 ?</a></h3>
+					<h4><a href="/validate/register/">还没有帐号？注册</a></h4>
+					<div class="clear"></div>
+				</div>
+			</form>
+		</div>
+	<!--start-copyright-->
+   		<div class="copy-right">
+				<p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		</div>
+	<!--//end-copyright-->
 </body>
 </html>

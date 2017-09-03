@@ -13,7 +13,7 @@
 <!--//webfonts-->
 </head>
 <body>
-	<h1>App Location Form</h1>
+	<h1>用户注册</h1>
 		<div class="app-location">
 			<h2>Welcome to Locaticus</h2>
 			<div class="line"><span></span></div>
@@ -22,11 +22,12 @@
 			{% csrf_token %}
 				<input name='email' type="text" class="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';}" >
 				<input name='password' type="password" class="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-				<div class="submit"><input type="submit" onclick="myFunction()" value="Sign in" ></div>
+				<input name='repassword' type="password" class="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+				<div class="submit"><input type="submit" onclick="myFunction()" value="注册" ></div>
 				<div class="clear"></div>
 				<div class="new">
 					<h3><a href="#">忘记密码 ?</a></h3>
-					<h4><a href="#">还没有帐号？注册</a></h4>
+					<h4><a href="/validate/login/">已有帐号，登录</a></h4>
 					<div class="clear"></div>
 				</div>
 			</form>
