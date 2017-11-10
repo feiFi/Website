@@ -1,0 +1,51 @@
+{%for blog in blogs %}
+<div class="jumbotron">
+  
+  <h2 >{{blog.title}}</h2>
+  <p class="blog-post-meta">{{blog.create_time}} by <a href="#">{{blog.author}}</a></p>
+  <hr>
+  <p>{{blog.contents|truncatechars:150}}</p>
+  <p>
+    <a id = "blog_{{blog.id}}" class="btn btn-lg btn-primary" href="javascript:void(0);" role="button">查看更多 &raquo;</a>
+  </p>
+</div>
+{% endfor %}
+<nav>
+<ul class="pager ">
+  <li><a href="javascript:void(0);" id = "page_pre">上一页</a></li>
+  <span class="current" >
+    第 {{ blogs.number }} 页 <small>(共 {{ blogs.paginator.num_pages }}页)</small>
+  </span>
+  <li> <a href="javascript:void(0);" id = "page_next">下一页</a></button>
+</ul>
+</nav>
+<script >
+$(document).ready(function(){
+{%for blog in blogs %}
+$("#blog_{{blog.id}}").click(function(){
+$("title").html("PEARSANKE  {{blog.title}}");
+$("#sidebar a").removeClass("active");
+$("#blog_main").load('blog_detail/{{blog.id}}/');
+$("#all_title").hide();
+})
+{% endfor %}
+
+$("#page_next").click(function(){
+{% if blogs.has_next %}
+$("#blog_main").load("blog_page/{{title}}/?page={{ blogs.next_page_number }}");
+{% else %}
+$("#page_next").addclass('disabled');
+{% endif %}
+})
+
+$("#page_pre").click(function(){
+{% if blogs.has_previous %}
+$("#blog_main").load("blog_page/{{title}}/?page={{ blogs.previous_page_number }}");
+{% else %}
+$("#page_pre").addclass('disabled');
+{% endif %}
+})
+
+
+})
+</script>

@@ -28,11 +28,11 @@ class Blog(models.Model):
 
     contents = models.TextField()
     picture = models.ImageField(
-        upload_to='/static/images', null=True, blank=True)
+        upload_to='static/images', null=True, blank=True)
     author = models.ForeignKey(User)
 
     tages = models.ManyToManyField(Tag)
-    create_time = models.DateTimeField(auto_now_add=True, auto_now=True)
+    create_time = models.DateTimeField(auto_now_add=True)
     is_top = models.BooleanField(default=False, verbose_name=u'置顶')
     status = models.IntegerField(default=0, choices=STATUS.items(),
                                  verbose_name='状态')
@@ -47,7 +47,7 @@ class Blog(models.Model):
 class Comment(models.Model):
     blog = models.ForeignKey(Blog)
     author = models.ForeignKey(User)
-    publish_Time = models.DateTimeField(auto_now_add=True, auto_now=True)
+    publish_Time = models.DateTimeField(auto_now_add=True)
     ip_address = models.GenericIPAddressField(blank=True, null=True)
     content = models.TextField()
     root_id = models.IntegerField(default=0)  # 评论的最上层评论，若该评论处于最上层，则为0，

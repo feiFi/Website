@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^validate/', include('validate.urls', namespace='validate')),#..
     url(r'^validate/', include('django.contrib.auth.urls')),#..
+    url(r'', include('vblog.urls', namespace='vblog')),#..
 
 ]
